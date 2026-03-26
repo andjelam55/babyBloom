@@ -1,72 +1,83 @@
 [
   {
     "id": 1,
-    "src": "jacket1.jfif",
-    "name": "Cozy Snuggle Jacket",
-    "description": "Warm and soft jacket for everyday wear.",
-    "category": 2,
-    "size": [1, 2],
-    "price": 500,
-    "discount": 20,
-    "delivery": true
+    "src": "dress3.jfif",
+    "name": "Ribbon Party Dress",
+    "description": "Elegant party dress.",
+    "category": 1,
+    "size": [1],
+    "price": 260,
+    "discount": null,
+    "star": 5
   },
   {
     "id": 2,
-    "src": "dress1.jfif",
-    "name": "Sunny Flower Dress",
-    "description": "Floral dress perfect for sunny days.",
-    "category": 1,
-    "size": [1, 3],
-    "price": 200,
-    "discount": null,
-    "delivery": true
-  },
-  {
-    "id": 3,
-    "src": "jacket2.jfif",
-    "name": "Winter Bunny Jacket",
-    "description": "Cute jacket for chilly mornings.",
-    "category": 2,
-    "size": [2, 3],
-    "price": 450,
-    "discount": null,
-    "delivery": true
-  },
-  {
-    "id": 4,
     "src": "set1.jfif",
     "name": "Cozy Two-Piece Set",
-    "description": "Soft outfit with jacket and pants.",
+    "description": "Outfit with blouse and pants.",
     "category": 3,
     "size": [1, 2],
     "price": 600,
     "discount": 17,
-    "delivery": true
+    "star": 4
+  },
+  {
+    "id": 3,
+    "src": "set3.jfif",
+    "name": "Party Time Set",
+    "description": "Set for special occasions.",
+    "category": 3,
+    "size": [1, 3],
+    "price": 580,
+    "discount": 12,
+    "star": 3
+  },
+  {
+    "id": 4,
+    "src": "dress5.jfif",
+    "name": "Elegant Ribbon Dress",
+    "description": "Dress for special occasions.",
+    "category": 1,
+    "size": [2, 3],
+    "price": 350,
+    "discount": 20,
+    "star": 3
   },
   {
     "id": 5,
-    "src": "jacket3.jfif",
-    "name": "Little Explorer Jacket",
-    "description": "Perfect for adventures outside.",
+    "src": "jacket1.jfif",
+    "name": "Cozy Snuggle Jacket",
+    "description": "Warm and soft jacket.",
     "category": 2,
-    "size": [1, 3],
-    "price": 470,
-    "discount": 15,
-    "delivery": false
+    "size": [1, 2],
+    "price": 500,
+    "discount": 20,
+    "star": 4
   },
   {
     "id": 6,
-    "src": "dress2.jfif",
-    "name": "Little Star Dress",
-    "description": "Cute dress with star prints.",
-    "category": 1,
-    "size": [2, 3],
-    "price": 220,
+    "src": "set4.jfif",
+    "name": "Comfy Daily Set",
+    "description": "Set for comfort and style.",
+    "category": 3,
+    "size": [2],
+    "price": 620,
     "discount": 15,
-    "delivery": false
+    "star": 5
   },
   {
     "id": 7,
+    "src": "jacket2.jfif",
+    "name": "Winter Bunny Jacket",
+    "description": "Jacket for chilly mornings.",
+    "category": 2,
+    "size": [2, 3],
+    "price": 450,
+    "discount": null,
+    "star": 4
+  },
+  {
+    "id": 8,
     "src": "set2.jfif",
     "name": "Little Explorer Set",
     "description": "All-in-one outfit for playtime.",
@@ -74,40 +85,29 @@
     "size": [2, 3],
     "price": 550,
     "discount": null,
-    "delivery": false
-  },
-  {
-    "id": 8,
-    "src": "jacket4.jfif",
-    "name": "Snuggle Hoodie Jacket",
-    "description": "Soft hoodie style jacket.",
-    "category": 2,
-    "size": [1, 2],
-    "price": 380,
-    "discount": null,
-    "delivery": true
+    "star": 3
   },
   {
     "id": 9,
-    "src": "dress3.jfif",
-    "name": "Ribbon Party Dress",
-    "description": "Elegant party dress with ribbon details.",
-    "category": 1,
-    "size": [1],
-    "price": 260,
-    "discount": null,
-    "delivery": true
+    "src": "jacket3.jfif",
+    "name": "Little Explorer Jacket",
+    "description": "Perfect for rainy days.",
+    "category": 2,
+    "size": [1, 3],
+    "price": 470,
+    "discount": 15,
+    "star": 4
   },
   {
     "id": 10,
-    "src": "set3.jfif",
-    "name": "Party Time Set",
-    "description": "Stylish set for special occasions.",
-    "category": 3,
-    "size": [1, 3],
-    "price": 580,
-    "discount": 12,
-    "delivery": true
+    "src": "dress2.jfif",
+    "name": "Little Star Dress",
+    "description": "Cute dress with star prints.",
+    "category": 1,
+    "size": [2, 3],
+    "price": 220,
+    "discount": 15,
+    "star": 3
   },
   {
     "id": 11,
@@ -118,40 +118,40 @@
     "size": [1, 2, 3],
     "price": 220,
     "discount": 10,
-    "delivery": true
+    "star": 4
   },
   {
     "id": 12,
     "src": "jacket5.jfif",
     "name": "Playtime Jacket",
-    "description": "Comfortable jacket for daily use.",
+    "description": "Jacket for daily use.",
     "category": 2,
     "size": [3],
     "price": 420,
     "discount": 10,
-    "delivery": false
+    "star": 5
   },
   {
     "id": 13,
-    "src": "dress5.png",
-    "name": "Elegant Ribbon Dress",
-    "description": "Perfect dress for special occasions.",
-    "category": 1,
-    "size": [2, 3],
-    "price": 350,
-    "discount": 20,
-    "delivery": false
+    "src": "jacket4.jfif",
+    "name": "Snuggle Hoodie Jacket",
+    "description": "Soft hoodie style jacket.",
+    "category": 2,
+    "size": [1, 2],
+    "price": 380,
+    "discount": null,
+    "star": 3
   },
   {
     "id": 14,
-    "src": "set4.jfif",
-    "name": "Comfy Daily Set",
-    "description": "Everyday set for comfort and style.",
-    "category": 3,
-    "size": [2],
-    "price": 620,
-    "discount": 15,
-    "delivery": false
+    "src": "dress1.jfif",
+    "name": "Sunny Flower Dress",
+    "description": "Dress for sunny days.",
+    "category": 1,
+    "size": [1, 3],
+    "price": 200,
+    "discount": null,
+    "star": 4
   },
   {
     "id": 15,
@@ -162,6 +162,6 @@
     "size": [1, 2],
     "price": 300,
     "discount": 5,
-    "delivery": true
+    "star": 3
   }
 ]

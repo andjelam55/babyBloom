@@ -27,14 +27,47 @@ $(document).ready(function(){
         }
     })
 });
+var productData = [];
 $(document).ready(function(){
     $.ajax({
         url:"assets/data/products.json",
         method:"GET",
         dataType:"json",
-        success:function(productData){
-            //console.log(productData)
-            renderProducts(productData);
+        success:function(data){
+            //console.log(data);
+            productData = data;
+            //console.log(productData);
+            renderProducts(data);
+            renderFeaturedProducts(productData);
+            
+        },
+        error:function(xhr){
+            console.log(xhr);
+        }
+    })
+});
+$(document).ready(function(){
+    $.ajax({
+        url:"assets/data/delivery.json",
+        method:"GET",
+        dataType:"json",
+        success:function(deliveryData){
+            //console.log(deliveryData)
+            //renderDelivery(deliveryData);
+        },
+        error:function(xhr){
+            console.log(xhr);
+        }
+    })
+});
+$(document).ready(function(){
+    $.ajax({
+        url:"assets/data/sort.json",
+        method:"GET",
+        dataType:"json",
+        success:function(sortData){
+            //console.log(sortData)
+            renderSort(sortData);
         },
         error:function(xhr){
             console.log(xhr);
@@ -104,29 +137,103 @@ function renderProducts(productData){
                             </div>
                             <div class="card-body">
                                 <a href="shop-single.html" class="h3 text-decoration-none">${product.name}</a>
-                                <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
-                                    <li>M/L/X/XL</li>
-                                    <li class="pt-2">
-                                        <span class="product-color-dot color-dot-red float-left rounded-circle ml-1"></span>
-                                        <span class="product-color-dot color-dot-blue float-left rounded-circle ml-1"></span>
-                                        <span class="product-color-dot color-dot-black float-left rounded-circle ml-1"></span>
-                                        <span class="product-color-dot color-dot-light float-left rounded-circle ml-1"></span>
-                                        <span class="product-color-dot color-dot-green float-left rounded-circle ml-1"></span>
-                                    </li>
-                                </ul>
                                 <ul class="list-unstyled d-flex justify-content-center mb-1">
-                                    <li>
-                                        <i class="text-warning fa fa-star"></i>
-                                        <i class="text-warning fa fa-star"></i>
-                                        <i class="text-warning fa fa-star"></i>
-                                        <i class="text-muted fa fa-star"></i>
-                                        <i class="text-muted fa fa-star"></i>
-                                    </li>
+                                ${getStar(product)}
                                 </ul>
-                                <p class="text-center mb-0">$250.00</p>
+                                ${getPrice(product.price,product.discount)}
+                                <a href="shop-single.html" class="h3 text-decoration-none">${product.description}</a>
                             </div>
+                            <p class="text-center"><a class="btn btn-success" href="card.html">Add to card</a></p>
                         </div>
                     </div>`
     }
     document.getElementById("products").innerHTML=data;
 }
+
+function getPrice(price,discount){
+    if(discount == null){
+        return `<p class="mb-1 price">$${price}</p>`;
+    }
+
+    const finalPrice = getFinalPrice(price,discount);
+    return `
+        <p class="mb-0 discount">-${discount}%</p>
+        <div class="price-row">
+            <span class="old-price">$${price}</span>
+            <span class="new-price">$${finalPrice.toFixed(2)}</span>
+        </div>`;
+}
+
+function getFinalPrice(price,discount){
+    if(discount == null){
+        return price;
+    }
+    return price-(price*discount/100);
+}
+
+function getStar(product){
+    var data = "";
+    for(let i=0;i<product.star;i++){
+        data+=`<i class="text-warning fa fa-star"></i>`
+    }
+    return data;
+}
+
+function renderSort(sortData){
+    var data = `<option value="0">Default</option>`;
+    for(var s of sortData){
+        data+=`<option value="${s.sortValue}">${s.sortName}</option>`
+    }
+    document.getElementById("sort").innerHTML=data;
+}
+
+function renderFeaturedProducts(productData){
+    var featuredData = productData.filter(function(p){
+        return p.star === 5;
+    })
+    var data = "";
+    for(var f of featuredData){
+        data+=`<div class="col-md-4">
+                        <div class="card mb-4 product-wap rounded-0">
+                            <div class="card rounded-0">
+                                <img class="card-img rounded-0 img-fluid" src="assets/img/${f.src}">
+                                <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
+                                    <ul class="list-unstyled">
+                                        <li><a class="btn btn-success text-white" href="shop-single.html"><i class="far fa-heart"></i></a></li>
+                                        <li><a class="btn btn-success text-white mt-2" href="shop-single.html"><i class="far fa-eye"></i></a></li>
+                                        <li><a class="btn btn-success text-white mt-2" href="shop-single.html"><i class="fas fa-cart-plus"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <a href="shop-single.html" class="h3 text-decoration-none">${f.name}</a>
+                                <ul class="list-unstyled d-flex justify-content-center mb-1">
+                                ${getStar(f)}
+                                </ul>
+                                ${getPrice(f.price,f.discount)}
+                                <a href="shop-single.html" class="h3 text-decoration-none">${f.description}</a>
+                            </div>
+                            <p class="text-center"><a class="btn btn-success" href="card.html">Add to card</a></p>
+                        </div>
+                    </div>`
+    }
+    document.getElementById("featuredProducts").innerHTML = data;
+    
+}
+
+// function renderDelivery(deliveryData){
+
+//     const selectChoose = document.getElementById("selectChoose");
+//     const select = document.createElement("select");
+//     select.id = "choose";
+//     select.innerHTML = "<option value='0'>Choose</option>";
+//     const options = deliveryData;
+//     options.forEach(o=>{
+//     const option = document.createElement("option");
+//     option.value = o.id;
+//     option.textContent = o.name;
+//     select.appendChild(option);
+//     });
+//     selectChoose.appendChild(select);
+
+// }
