@@ -1,0 +1,15 @@
+[
+    { 
+        "id": 1, 
+        "name": "Dress",
+        "img": "dress7.jfif"
+    },
+    {   "id": 2, 
+        "name": "Jacket",
+        "img": "jacket6.jfif"
+    },
+    {   "id": 3,
+        "name": "Set",
+        "img": "set5.jfif"
+    }
+]

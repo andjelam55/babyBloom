@@ -1,0 +1,10 @@
+[
+    {
+        "sortValue": "price-asc",
+        "sortName": "Price low to high"
+    },
+    {
+        "sortValue": "price-desc",
+        "sortName": "Price high to low"
+    }
+]

@@ -1,0 +1,167 @@
+[
+  {
+    "id": 1,
+    "src": "jacket1.jfif",
+    "name": "Cozy Snuggle Jacket",
+    "description": "Warm and soft jacket for everyday wear.",
+    "category": 2,
+    "size": [1, 2],
+    "price": 500,
+    "discount": 20,
+    "delivery": true
+  },
+  {
+    "id": 2,
+    "src": "dress1.jfif",
+    "name": "Sunny Flower Dress",
+    "description": "Floral dress perfect for sunny days.",
+    "category": 1,
+    "size": [1, 3],
+    "price": 200,
+    "discount": null,
+    "delivery": true
+  },
+  {
+    "id": 3,
+    "src": "jacket2.jfif",
+    "name": "Winter Bunny Jacket",
+    "description": "Cute jacket for chilly mornings.",
+    "category": 2,
+    "size": [2, 3],
+    "price": 450,
+    "discount": null,
+    "delivery": true
+  },
+  {
+    "id": 4,
+    "src": "set1.jfif",
+    "name": "Cozy Two-Piece Set",
+    "description": "Soft outfit with jacket and pants.",
+    "category": 3,
+    "size": [1, 2],
+    "price": 600,
+    "discount": 17,
+    "delivery": true
+  },
+  {
+    "id": 5,
+    "src": "jacket3.jfif",
+    "name": "Little Explorer Jacket",
+    "description": "Perfect for adventures outside.",
+    "category": 2,
+    "size": [1, 3],
+    "price": 470,
+    "discount": 15,
+    "delivery": false
+  },
+  {
+    "id": 6,
+    "src": "dress2.jfif",
+    "name": "Little Star Dress",
+    "description": "Cute dress with star prints.",
+    "category": 1,
+    "size": [2, 3],
+    "price": 220,
+    "discount": 15,
+    "delivery": false
+  },
+  {
+    "id": 7,
+    "src": "set2.jfif",
+    "name": "Little Explorer Set",
+    "description": "All-in-one outfit for playtime.",
+    "category": 3,
+    "size": [2, 3],
+    "price": 550,
+    "discount": null,
+    "delivery": false
+  },
+  {
+    "id": 8,
+    "src": "jacket4.jfif",
+    "name": "Snuggle Hoodie Jacket",
+    "description": "Soft hoodie style jacket.",
+    "category": 2,
+    "size": [1, 2],
+    "price": 380,
+    "discount": null,
+    "delivery": true
+  },
+  {
+    "id": 9,
+    "src": "dress3.jfif",
+    "name": "Ribbon Party Dress",
+    "description": "Elegant party dress with ribbon details.",
+    "category": 1,
+    "size": [1],
+    "price": 260,
+    "discount": null,
+    "delivery": true
+  },
+  {
+    "id": 10,
+    "src": "set3.jfif",
+    "name": "Party Time Set",
+    "description": "Stylish set for special occasions.",
+    "category": 3,
+    "size": [1, 3],
+    "price": 580,
+    "discount": 12,
+    "delivery": true
+  },
+  {
+    "id": 11,
+    "src": "dress4.jfif",
+    "name": "Everyday Comfort Dress",
+    "description": "Soft dress for daily wear.",
+    "category": 1,
+    "size": [1, 2, 3],
+    "price": 220,
+    "discount": 10,
+    "delivery": true
+  },
+  {
+    "id": 12,
+    "src": "jacket5.jfif",
+    "name": "Playtime Jacket",
+    "description": "Comfortable jacket for daily use.",
+    "category": 2,
+    "size": [3],
+    "price": 420,
+    "discount": 10,
+    "delivery": false
+  },
+  {
+    "id": 13,
+    "src": "dress5.png",
+    "name": "Elegant Ribbon Dress",
+    "description": "Perfect dress for special occasions.",
+    "category": 1,
+    "size": [2, 3],
+    "price": 350,
+    "discount": 20,
+    "delivery": false
+  },
+  {
+    "id": 14,
+    "src": "set4.jfif",
+    "name": "Comfy Daily Set",
+    "description": "Everyday set for comfort and style.",
+    "category": 3,
+    "size": [2],
+    "price": 620,
+    "discount": 15,
+    "delivery": false
+  },
+  {
+    "id": 15,
+    "src": "dress6.jfif",
+    "name": "Playful Dots Dress",
+    "description": "Fun dotted dress for babies.",
+    "category": 1,
+    "size": [1, 2],
+    "price": 300,
+    "discount": 5,
+    "delivery": true
+  }
+]
