@@ -71,7 +71,7 @@
     "name": "Winter Bunny Jacket",
     "description": "Jacket for chilly mornings.",
     "category": 2,
-    "size": [2, 3],
+    "size": [3],
     "price": 450,
     "discount": null,
     "star": 4
@@ -82,7 +82,7 @@
     "name": "Little Explorer Set",
     "description": "All-in-one outfit for playtime.",
     "category": 3,
-    "size": [2, 3],
+    "size": [2],
     "price": 550,
     "discount": null,
     "star": 3

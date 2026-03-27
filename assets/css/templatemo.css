@@ -256,3 +256,30 @@ body, ul, li, p, a, label, input, div {
 .btn-success {
   color: #fff !important;
 }
+#featuredProducts .col-md-4 {
+    margin-bottom: 30px;
+    display: flex;       
+    justify-content: center; 
+}
+.error-message {
+    color: red;
+    font-size: 0.9rem;
+    margin-top: 2px;
+    display: block;
+}
+.success-message {
+    color: green;
+    font-weight: bold;
+    display: block;
+    margin-top: 10px;
+}
+#contact .container.py-5 {
+    display: flex;
+    justify-content: center;
+    align-items: center;     
+    min-height: 80vh;        
+}
+#contact .row {
+    width: 100%;
+    justify-content: center;
+}
