@@ -11,7 +11,7 @@ $(document).ready(function() {
             dataType: "json",
             success: onSuccess,
             error: function(xhr) {
-                console.log("Error loading " + url, xhr);
+                console.log("Error loading " + fileName, xhr);
             }
         });
     }
@@ -26,10 +26,26 @@ $(document).ready(function() {
         renderDropdown(categoryData, "cat", "All category");
     });
 
-    ajaxCallback("products.json", function(productData){
-        window.productData = productData;
+    ajaxCallback("products.json", function(data){
+        productData = data;
+
+        try {
+            var savedCart = localStorage.getItem("cart");
+            if (savedCart) {
+                cartItems = JSON.parse(savedCart).map(item => ({
+                    productId: parseInt(item.productId),
+                    quantity: parseInt(item.quantity) || 1
+                }));
+            }
+        } catch (error) {
+            console.log("Cart error:", error);
+            cartItems = [];
+        }
+
         renderProducts(productData);
         renderFeaturedProducts(productData);
+        renderCart();
+        updateCart();
     });
 
     ajaxCallback("delivery.json", function(deliveryData){
@@ -139,9 +155,15 @@ function renderMenu(menuData){
     var data = `<div class="flex-fill">
     <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">`;
     for(var menu of menuData){
-        data+=`<li class="nav-item">
-        <a class="nav-link" href="${menu.href}">${menu.name}</a>
-        </li>`
+        if(menu.name === "Doc"){
+            data+=`<li class="nav-item">
+            <a class="nav-link" href="${menu.href}" target="_blank">${menu.name}</a>
+            </li>`;
+        }else {
+            data+=`<li class="nav-item">
+            <a class="nav-link" href="${menu.href}">${menu.name}</a>
+            </li>`;
+        }
     }
     data+=`</ul></div>`;
     document.getElementById("templatemo_main_nav").innerHTML = data; 
@@ -193,7 +215,7 @@ function renderProducts(productData){
                                 ${getPrice(product.price,product.discount)}
                                 <a href="shop-single.html" class="h3 text-decoration-none">${product.description}</a>
                             </div>
-                            <p class="text-center"><button class="btn btn-success">Add to cart</button></p>
+                            <p class="text-center"><button class="btn btn-success" onclick="addToCart(${product.id})">Add to cart</button></p>
                         </div>
                     </div>`
     }
@@ -250,7 +272,7 @@ function renderFeaturedProducts(productData){
                                 ${getPrice(f.price,f.discount)}
                                 <a href="shop-single.html" class="h3 text-decoration-none">${f.description}</a>
                             </div>
-                            <p class="text-center"><button class="btn btn-success">Add to cart</button></p>
+                            <p class="text-center"><button class="btn btn-success" onclick="addToCart(${f.id})">Add to cart</button></p>
                         </div>
                     </div>`
     }
@@ -313,10 +335,15 @@ function filterAndSort(){
     renderProducts(filSorData);
 }
 
-document.getElementById("sort").addEventListener("change",filterAndSort);
-document.getElementById("search").addEventListener("input",filterAndSort);
-document.getElementById("cat").addEventListener("change",filterAndSort); 
-document.getElementById("size").addEventListener("change",filterAndSort);
+var sort = document.getElementById("sort");
+var search = document.getElementById("search");
+var cat = document.getElementById("cat");
+var size = document.getElementById("size");
+
+if(sort) sort.addEventListener("change", filterAndSort);
+if(search) search.addEventListener("input", filterAndSort);
+if(cat) cat.addEventListener("change", filterAndSort);
+if(size) size.addEventListener("change", filterAndSort);
 
 function renderDelivery(deliveryData){
 
@@ -324,7 +351,7 @@ function renderDelivery(deliveryData){
     const select = document.createElement("select");
     select.id = "choose";
     select.classList.add("form-control");
-    select.innerHTML = "<option value='0'>Choose</option>";
+    select.innerHTML = "<option value='0'>Choose delivery option</option>";
     const options = deliveryData;
     options.forEach(o=>{
     const option = document.createElement("option");
@@ -342,7 +369,7 @@ var form = document.getElementById('contactForm');
 if(form){
 form.addEventListener('submit',function(event) {
 event.preventDefault();
- console.log("SUBMIT RADI");
+
 const name = document.getElementById('full-name').value;
 const email = document.getElementById('email').value;
 const chooseSelect = document.getElementById('choose');
@@ -365,7 +392,7 @@ isValid = false;
 document.getElementById('emailError').textContent = "";
 }
 if(choose === "0"){
-document.getElementById('selectError').textContent = "Please select.";
+document.getElementById('selectError').textContent = "Please choose a delivery option.";
 isValid = false;
 } else{
 document.getElementById('selectError').textContent = "";
@@ -397,5 +424,153 @@ document.getElementById('success-message2').textContent = "Form successfully sub
 
 }
 
+function addToCart(productId){
+    try {
+        productId = parseInt(productId);
+        var item = cartItems.find(i => parseInt(i.productId) === productId);
+        if(item){
+            item.quantity += 1;
+        } else {
+            cartItems.push({
+                productId: productId,
+                quantity: 1
+            });
+        }
 
+        updateCart();
+        renderCart();
+        showToast("Successfully added to cart");
+
+    } catch (error) {
+        console.log("Add to cart error:", error);
+    }
+}
+
+function updateCart(){
+    var cartCount = document.getElementById("cartCount");
+    if(!cartCount) return;
+
+    var totalQuantity = cartItems.reduce((sum, item) => {
+        return sum + (parseInt(item.quantity) || 0);
+    }, 0);
+
+    cartCount.textContent = totalQuantity;
+    localStorage.setItem("cart", JSON.stringify(cartItems));
+}
+
+function showToast(message){
+    var toast = document.getElementById("toast");
+    if(!toast) return;
+
+    toast.innerText = message;
+    toast.style.display = "block";
+
+    setTimeout(() => {
+        toast.style.display = "none";
+    }, 2000);
+}
+
+function renderCart() {
+    try {
+        var cartRegion = document.getElementById("cartRegion");
+        if(!cartRegion) return;
+
+        if(cartItems.length === 0){
+            cartRegion.innerHTML = `<div class="alert alert-info text-center py-3">
+                                        <h5 class="mb-1">Your cart is empty</h5>
+                                    </div>`;
+            return;
+        }
+
+        var total = 0;
+        var rows = "";
+
+        for(var item of cartItems){
+            var product = productData.find(p => parseInt(p.id) === parseInt(item.productId));
+            if(!product) continue;
+
+            var finalPrice = product.price * (1 - (product.discount || 0) / 100);
+            var rowTotal = finalPrice * item.quantity;
+            total += rowTotal;
+
+            rows += `
+            <tr>
+                <td>
+                    <div class="d-flex align-items-center gap-2">
+                        <img src="assets/img/${product.src}" alt="${product.name}" width="60" class="img-fluid rounded">
+                        <span>${product.name}</span>
+                    </div>
+                </td>
+                <td class="text-end">$${finalPrice.toFixed(2)}</td>
+                <td class="text-center">
+                    <button class="btn btn-outline-secondary btn-sm btn-qty-minus" data-id="${product.id}">-</button>
+                    <span class="mx-2">${item.quantity}</span>
+                    <button class="btn btn-outline-secondary btn-sm btn-qty-plus" data-id="${product.id}">+</button>
+                </td>
+                <td class="text-end">$${rowTotal.toFixed(2)}</td>
+                <td class="text-end">
+                    <button class="btn btn-outline-danger btn-sm btn-remove-item" data-id="${product.id}">Remove</button>
+                </td>
+            </tr>`;
+        }
+
+        cartRegion.innerHTML = `
+        <div class="table-responsive">
+            <table class="table table-sm align-middle">
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th class="text-end">Price</th>
+                        <th class="text-center">Quantity</th>
+                        <th class="text-end">Total</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>${rows}</tbody>
+                <tfoot>
+                    <tr>
+                        <th colspan="3">Total price</th>
+                        <th class="text-end">$${total.toFixed(2)}</th>
+                        <th class="text-end">
+                            <a href="contact.html" class="btn btn-success">Order</a>
+                        </th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>`;
+    } catch(error) {
+        console.log("Render cart error:", error);
+    }
+}
+function updateCartQuantity(productId, delta){
+    let item = cartItems.find(i => i.productId === productId);
+    if(!item) return;
+
+    if(delta < 0 && item.quantity <= 1){
+        showToast("Količina ne može biti manja od 1.");
+        return;
+    }
+
+    item.quantity += delta;
+    updateCart();
+    renderCart();
+}
+
+function removeCart(productId){
+    cartItems = cartItems.filter(item => item.productId != productId);
+    updateCart();
+    renderCart();
+}
+
+document.addEventListener("click", function(e){
+    if(e.target.classList.contains("btn-qty-minus")){
+        updateCartQuantity(parseInt(e.target.dataset.id), -1);
+    }
+    if(e.target.classList.contains("btn-qty-plus")){
+        updateCartQuantity(parseInt(e.target.dataset.id), 1);
+    }
+    if(e.target.classList.contains("btn-remove-item")){
+        removeCart(parseInt(e.target.dataset.id));
+    }
+});
 

@@ -6,7 +6,7 @@
     "description": "Elegant party dress.",
     "category": 1,
     "size": [1],
-    "price": 260,
+    "price": 26,
     "discount": null,
     "star": 5
   },
@@ -17,7 +17,7 @@
     "description": "Outfit with blouse and pants.",
     "category": 3,
     "size": [1, 2],
-    "price": 600,
+    "price": 60,
     "discount": 17,
     "star": 4
   },
@@ -28,7 +28,7 @@
     "description": "Set for special occasions.",
     "category": 3,
     "size": [1, 3],
-    "price": 580,
+    "price": 58,
     "discount": 12,
     "star": 3
   },
@@ -39,7 +39,7 @@
     "description": "Dress for special occasions.",
     "category": 1,
     "size": [2, 3],
-    "price": 350,
+    "price": 35,
     "discount": 20,
     "star": 3
   },
@@ -50,7 +50,7 @@
     "description": "Warm and soft jacket.",
     "category": 2,
     "size": [1, 2],
-    "price": 500,
+    "price": 50,
     "discount": 20,
     "star": 4
   },
@@ -61,7 +61,7 @@
     "description": "Set for comfort and style.",
     "category": 3,
     "size": [2],
-    "price": 620,
+    "price": 62,
     "discount": 15,
     "star": 5
   },
@@ -72,7 +72,7 @@
     "description": "Jacket for chilly mornings.",
     "category": 2,
     "size": [3],
-    "price": 450,
+    "price": 45,
     "discount": null,
     "star": 4
   },
@@ -83,7 +83,7 @@
     "description": "All-in-one outfit for playtime.",
     "category": 3,
     "size": [2],
-    "price": 550,
+    "price": 55,
     "discount": null,
     "star": 3
   },
@@ -94,7 +94,7 @@
     "description": "Perfect for rainy days.",
     "category": 2,
     "size": [1, 3],
-    "price": 470,
+    "price": 47,
     "discount": 15,
     "star": 4
   },
@@ -105,7 +105,7 @@
     "description": "Cute dress with star prints.",
     "category": 1,
     "size": [2, 3],
-    "price": 220,
+    "price": 22,
     "discount": 15,
     "star": 3
   },
@@ -116,7 +116,7 @@
     "description": "Soft dress for daily wear.",
     "category": 1,
     "size": [1, 2, 3],
-    "price": 220,
+    "price": 22,
     "discount": 10,
     "star": 4
   },
@@ -127,7 +127,7 @@
     "description": "Jacket for daily use.",
     "category": 2,
     "size": [3],
-    "price": 420,
+    "price": 42,
     "discount": 10,
     "star": 5
   },
@@ -138,7 +138,7 @@
     "description": "Soft hoodie style jacket.",
     "category": 2,
     "size": [1, 2],
-    "price": 380,
+    "price": 38,
     "discount": null,
     "star": 3
   },
@@ -149,7 +149,7 @@
     "description": "Dress for sunny days.",
     "category": 1,
     "size": [1, 3],
-    "price": 200,
+    "price": 20,
     "discount": null,
     "star": 4
   },
@@ -160,7 +160,7 @@
     "description": "Fun dotted dress for babies.",
     "category": 1,
     "size": [1, 2],
-    "price": 300,
+    "price": 30,
     "discount": 5,
     "star": 3
   }

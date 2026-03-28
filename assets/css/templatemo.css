@@ -283,3 +283,15 @@ body, ul, li, p, a, label, input, div {
     width: 100%;
     justify-content: center;
 }
+.custom-toast{
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #c4a69f;
+    color: white;
+    padding: 12px 18px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    z-index: 9999;
+    display: none;
+}
