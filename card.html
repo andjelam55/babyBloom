@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
 </head>
 
-<body>
+<body class="d-flex flex-column min-vh-100">
     <!-- Header -->
     <nav class="navbar navbar-expand-lg navbar-light shadow">
         <div class="container d-flex justify-content-between align-items-center">
@@ -45,11 +45,13 @@
     </nav>
     <!-- Close Header -->
 
+    <main class="flex-grow-1">
     <div class="container my-5">
         <h2 class="text-center">Your Cart</h2>
         <div id="cartRegion"></div>
         <p class="text-center mt-3"><a class="btn btn-success" href="shop.html">Back to Shop</a></p>
     </div>
+    </main>
 
 <!-- Start Footer -->
     <footer class="bg-dark py-4" id="tempaltemo_footer">

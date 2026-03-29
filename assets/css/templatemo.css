@@ -295,6 +295,3 @@ body, ul, li, p, a, label, input, div {
     z-index: 9999;
     display: none;
 }
-#cartRegion {
-    min-height: 300px; /* ili 400px ako hoćeš više */
-}
